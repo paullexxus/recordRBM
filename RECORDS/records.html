@@ -1,0 +1,279 @@
+<?php
+    session_start();
+    include("config.php");
+    if(!isset($_SESSION['valid'])){
+        header("Location: login.php");
+    }
+?>
+
+<!-- User Interface for List of Records Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBM MOTORPARTS, ACCESSORIES & SERVICES | RECORDS</title>
+    
+    <!-- Style for the User Interface -->
+    <link rel="stylesheet" type="text/css" href="records.css">
+    
+    <!-- Font Used ('Poppins') --> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+</head>
+
+<body style="background-image: url(background.jpg);">
+    <header>
+        <img src="img/navtab.png" alt="navtab.png" id="navtab">INVENTORY RECORDS
+        <ul>
+            <li></li>
+        </ul>
+    </header>
+    <div class="records-container">
+        <div class="records-log">
+            <h2>Inventory Records</h2>
+            <p>List of all events in Inventory.</p>
+            
+            <!-- Dropdown container -->
+            <div class="dropdown-container">
+                
+                <!-- Form to filter records -->
+                <form action="Records.php" id="filter-form" class="filter-form">
+                    <div class="filter-group">
+                        <!-- Filter Period -->
+                        <label for="filter-period">Period</label>
+                        <select id="filter-period">
+                            <option value="All Period">All Period</option>
+                            <option value="Last 7 Days">Last 7 Days</option>
+                            <option value="Last 30 Days">Last 30 Days</option>
+                            <option value="This Year">This Year</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <!-- Filter Category -->
+                        <label for="filter-category">Category</label>
+                        <select id="filter-category">
+                            <option value="accessories">Accessories</option>
+                            <option value="parts">Parts</option>
+                            <option value="tires">Tires</option>
+                            <option value="fluids">Fluids</option>
+                            <option value="lubricants">Lubricants</option>
+                            <option value="electricals">Electricals</option>
+                            <option value="safety-gear">Safety Gear</option>
+                            <option value="detailing-products">Detailing Products</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <!-- Filter Type -->
+                        <label for="filter-type">Type</label>
+                        <select id="filter-type">
+                            <option value="item-number">Item Number</option>
+                            <option value="item-name">Item Name</option>
+                            <option value="category">Category</option>
+                            <option value="price">Price</option>
+                            <option value="quantity">Quantity</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <!-- Filter Sort -->
+                        <label for="filter-sort">Sort</label>
+                        <select id="filter-sort">
+                            <option value="highest-to-lowest">Highest to Lowest</option>
+                            <option value="lowest-to-highest">Lowest to Highest</option>
+                            <option value="a-to-z">A-Z</option>
+                        </select>
+                    </div>
+
+                   <!-- Blank Form to make the apply button move to the right -->                                       
+                   <div class="blank-form" style="display: none;">
+                        <!-- This form is now hidden -->
+                        <label for=""></label>
+                        <select id="">
+                        </select>
+                    </div>
+
+
+              
+                    <!-- Apply Button -->
+                    <div class="submit-button" style="display: flex; justify-content: flex-end;" align="right">
+                       <button type="submit" class="apply-button">Apply</button>
+                    </div>
+                </form> <!-- End of the form -->
+                
+            </div>
+            
+        </div>
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Date Period</th>
+                        <th>Item Number</th>
+                        <th>Category</th>
+                        <th>Item Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>In/Out Stock</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-07-25</td>
+                        <td>01-1283828392</td>
+                        <td>Accessories</td>
+                        <td>Spark Plugs</td>
+                        <td>550</td>
+                        <td>200</td>
+                        <td>In Stock</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <td>2024-07-25</td>
+                        <td>02-1283828392</td>
+                        <td>Safety Gear</td>
+                        <td>Helmet</td>
+                        <td>1300</td>
+                        <td>50</td>
+                        <td>In Stock</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <td>2024-07-25</td>
+                        <td>03-1283828392</td>
+                        <td>Fluids</td>
+                        <td>Crude Oil</td>
+                        <td>250</td>
+                        <td>100</td>
+                        <td>In Stock</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <td>2024-07-25</td>
+                        <td>04-1283828392</td>
+                        <td>Lubricants</td>
+                        <td>Lubricant Oil</td>
+                        <td>200</td>
+                        <td>150</td>
+                        <td>In Stock</td>
+                        <td>Available</td>
+                    </tr>
+                    
+                     <tr>
+                     <td>2024-07-25</td>
+                     <td>02-1283828392</td>
+                     <td>Safety Gear</td>
+                     <td>Helmet</td>
+                     <td>1300</td>
+                     <td>50</td>
+                     <td>In Stock</td>
+                     <td>Available</td>
+                   </tr>
+                   
+                   <tr>
+                     <td>2024-07-25</td>
+                     <td>03-1283828392</td>
+                     <td>Fluids</td>
+                     <td>Crude Oil</td>
+                     <td>250</td>
+                     <td>100</td>
+                     <td>In Stock</td>
+                     <td>Available</td>
+                   </tr>
+                   
+                   <tr>
+                     <td>2024-07-25</td>
+                     <td>04-1283828392</td>
+                     <td>Lubricants</td>
+                     <td>Lubricant Oil</td>
+                     <td>200</td>
+                     <td>150</td>
+                     <td>In Stock</td>
+                     <td>Available</td>
+                   </tr>
+                   
+                   <tr>
+                      <td>2024-07-25</td>
+                      <td>01-1283828392</td>
+                      <td>Accessories</td>
+                      <td>Spark Plugs</td>
+                      <td>550</td>
+                      <td>200</td>
+                      <td>In Stock</td>
+                      <td>Available</td>
+                    </tr>
+                    <tr>
+                      <td>2024-07-25</td>
+                      <td>02-1283828392</td>
+                      <td>Safety Gear</td>
+                      <td>Helmet</td>
+                      <td>1300</td>
+                      <td>50</td>
+                      <td>In Stock</td>
+                      <td>Available</td>
+                    </tr>
+                    <tr>
+                      <td>2024-07-25</td>
+                      <td>03-1283828392</td>
+                      <td>Fluids</td>
+                      <td>Crude Oil</td>
+                      <td>250</td>
+                      <td>100</td>
+                      <td>In Stock</td>
+                      <td>Available</td>
+                    </tr>
+                    <tr>
+                      <td>2024-07-25</td>
+                      <td>04-1283828392</td>
+                      <td>Lubricants</td>
+                      <td>Lubricant Oil</td>
+                      <td>200</td>
+                      <td>150</td>
+                      <td>In Stock</td>
+                      <td>Available</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>2024-07-25</td>
+                      <td>02-1283828392</td>
+                      <td>Safety Gear</td>
+                      <td>Helmet</td>
+                      <td>1300</td>
+                      <td>50</td>
+                      <td>In Stock</td>
+                      <td>Available</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>2024-07-25</td>
+                      <td>03-1283828392</td>
+                      <td>Fluids</td>
+                      <td>Crude Oil</td>
+                      <td>250</td>
+                      <td>100</td>
+                      <td>In Stock</td>
+                      <td>Available</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>2024-07-25</td>
+                      <td>04-1283828392</td>
+                      <td>Lubricants</td>
+                      <td>Lubricant Oil</td>
+                      <td>200</td>
+                      <td>150</td>
+                      <td>In Stock</td>
+                      <td>Available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="records.js"></script> <!-- JavaScript for dropdown functionality -->
+
+</body>
+</html>

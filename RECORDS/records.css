@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #000;
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    color: #fff;
+    background-color: #ba181b;
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+}
+
+header #navtab {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    position: absolute;
+    top: 2px;
+    filter: grayscale(0%);
+}
+
+/* Dropdown Container in Fixed Position Below Header */
+/* Default for larger screens */
+.dropdown-container {
+    text-align: left;
+    padding: 10px;
+    position: fixed;
+    top: 90px; /* Just below the header */
+    width: 80%; /* Set to 80% for larger screens */
+    max-width: 1200px; /* Maximum width limit */
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); /* Optional shadow */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to keep it centered */
+}
+
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 45%; /* Ito ay nagse-set ng 45% width sa bawat item */
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+select, .apply-button {
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ad1111;
+    background-color: #ad1111;
+    color: #fff;
+    width: 100%; /* Make the select elements full width */
+}
+
+.submit-button {
+    display: flex; /* Use flex for alignment */
+    justify-content: flex-end; /* Align the button to the right */
+    margin-top: 10px; /* Space above the button */
+    width: 100%;
+}
+
+.apply-button {
+    margin-top: 0;
+    cursor: pointer;
+    max-width: 200px;
+    width: 100%;
+}
+
+/* Table container in Fixed Position */
+.table-container {
+    margin-top: 130px;
+    width: 100%;/*width container of tables*/
+    border-radius: 5px;
+    display: flex;
+    position: fixed;
+    top: 200px; /* Below dropdown container */
+    left: 0;
+    overflow-x: auto;
+    height: calc(100vh - 200px); /* Dynamic height based on the screen size and fixed elements */
+}
+
+.styled-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: rgba(187, 187, 187);
+    margin: 5px;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.styled-table th, td {
+    padding: 10px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.styled-table tbody td {
+    padding: 12px 15px;
+    color: #000;
+}
+
+.styled-table thead th {
+    background-color: rgb(187, 187, 187);
+    padding: 12px 15px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    color: #000;
+}
+
+.styled-table tbody tr:hover {
+    background-color: rgba(173, 17, 17, 0.7);
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+tr:nth-child(odd) {
+    background-color: gray;
+}
+
+/* Responsive Styles */
+
+/* Tablets and Medium Screens */
+@media (max-width: 768px) {
+    .dropdown-container {
+        width: 90%; /* Slightly larger width for smaller screens */
+        padding: 8px; /* Reduced padding */
+    }
+
+    .apply-button {
+        width: 100%; /* Full width ang button sa mas maliit na screen */
+    }
+
+    .table-container .styled-table {
+        padding: 10px;
+    }
+}
+
+/* Phones and Small Screens */
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .dropdown-container {
+        position: fixed;
+        top: 70px; /* Ensure it is positioned below the header */
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Keep background for better visibility */
+        padding: 10px;
+        z-index: 999; /* Keep it on top */
+    }
+    
+    select {
+        width: 100%;
+    }
+    
+    .apply-button {
+        width: 100%;
+        padding: 10px;
+        display: block;
+        margin: 10px auto;
+    }
+
+    /* Make dropdown container fixed and adjust its position */
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        position: fixed;
+        top: 140px; /* Positioned below the dropdown */
+        height: calc(100vh - 140px); /* Ensure the table takes up the remaining space */
+    }
+
+    .table-container .styled-table {
+        width: 600px;
+        padding: 5px;
+    }
+
+    .styled-table th, td {
+        padding: 5px;
+    }
+
+    .records-log {
+        padding: 5px;
+    }
+}
+
